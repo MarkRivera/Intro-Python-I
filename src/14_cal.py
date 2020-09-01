@@ -30,3 +30,18 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+
+def specify_date(month=datetime.now().month, year=datetime.now().year):
+  c = calendar.TextCalendar(firstweekday=0)
+  
+  if len(sys.argv) == 1:
+    print(c.formatmonth(year, month))
+    print("\n Input the month number (ex: December should be input as 12) as the first argument, you can then input a year (year is optional). \n")
+  elif len(sys.argv) == 2:
+    ## If sys arguments are larger than 1, assume input is a month number and convert that string into an Int. 
+    print(c.formatmonth(year, int(sys.argv[1])))
+  else:
+    ## Assume two arguments, month and year
+    print(c.formatmonth(int(sys.argv[2]), int(sys.argv[1])))
+
+specify_date()
